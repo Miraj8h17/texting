@@ -1,0 +1,423 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --bg-dark: #0f172a;
+  --bg-card: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border: #334155;
+  --glass: rgba(30, 41, 59, 0.7);
+  --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Typography */
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(to right, #fff, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin: 0 0 12px 0;
+  font-weight: 600;
+}
+
+/* Form Elements */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+textarea {
+  width: 100%;
+  height: 200px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  color: var(--text-main);
+  font-family: 'Inter', monospace;
+  font-size: 14px;
+  resize: none;
+  transition: all 0.2s;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+select {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  color: var(--text-main);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Template Cards */
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.template-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.template-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.template-card.active {
+  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.template-icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.template-name {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Phone Container */
+.phone-mockup {
+  width: 375px;
+  height: 812px;
+  background: #000;
+  border-radius: 40px;
+  border: 12px solid #2d2d2d;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  transform: scale(0.9);
+}
+
+/* Dynamic Island / Notch */
+.phone-mockup::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 30px;
+  background: #000;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  z-index: 100;
+}
+
+.chat-canvas {
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.chat-header {
+  height: 88px;
+  padding-top: 44px;
+  /* Status bar space */
+  padding-bottom: 10px;
+  padding-left: 16px;
+  padding-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.chat-area {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scroll-behavior: smooth;
+}
+
+.chat-area::-webkit-scrollbar {
+  width: 4px;
+}
+
+.chat-area::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+/* Bubble Base Styles */
+.bubble {
+  max-width: 70%;
+  padding: 8px 12px;
+  border-radius: 18px;
+  font-size: 16px;
+  line-height: 1.3;
+  position: relative;
+  word-wrap: break-word;
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.bubble.me {
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.bubble.them {
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+/* iMessage Theme */
+.imessage .chat-canvas {
+  background: #fff;
+}
+
+.imessage .chat-header {
+  background: rgba(245, 245, 245, 0.9);
+  color: #000;
+}
+
+.imessage .bubble.me {
+  background: linear-gradient(180deg, #3478f6, #1eb0f4);
+  color: white;
+}
+
+.imessage .bubble.them {
+  background: #e9e9eb;
+  color: #000;
+}
+
+/* WhatsApp Theme */
+.whatsapp .chat-canvas {
+  background-color: #efe7dd;
+  background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
+}
+
+.whatsapp .chat-header {
+  background: #075e54;
+  color: white;
+  border: none;
+}
+
+.whatsapp .bubble.me {
+  background: #dcf8c6;
+  color: #000;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.whatsapp .bubble.them {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* Snapchat Theme */
+.snapchat .chat-canvas {
+  background: #fff;
+}
+
+.snapchat .chat-header {
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid #eee;
+  color: #000;
+}
+
+.snapchat .bubble.me {
+  background: #3cb2e2;
+  /* Blue for chats */
+  color: white;
+  border-left: 3px solid #000;
+  /* Snap style indicator */
+  border-radius: 4px;
+  padding: 12px;
+}
+
+.snapchat .bubble.them {
+  background: #fff;
+  color: #000;
+  border-left: 3px solid #ef3b5a;
+  /* Red for chats */
+  border-radius: 4px;
+  padding: 12px;
+}
+
+/* Render Mode Overrides */
+body.render-mode {
+  background: transparent;
+}
+
+body.render-mode .app-container {
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+body.render-mode .sidebar {
+  display: none;
+}
+
+body.render-mode .phone-mockup {
+  width: 100vw;
+  height: 100vh;
+  border: none;
+  border-radius: 0;
+  transform: none;
+  box-shadow: none;
+  margin: 0;
+}
+
+body.render-mode .phone-mockup::after {
+  display: none;
+  /* Hide notch */
+}
+
+/* Message List in Sidebar */
+.message-list {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.message-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 13px;
+}
+
+.message-item.me {
+  border-left: 3px solid var(--primary);
+}
+
+.message-item.them {
+  border-left: 3px solid #ef4444;
+  /* Red-ish for them */
+}
+
+.message-item .msg-text {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0 4px;
+}
+
+.delete-btn:hover {
+  color: #ef4444;
+}

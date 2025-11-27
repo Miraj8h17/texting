@@ -1,0 +1,11 @@
+{
+  "theme": "imessage",
+  "size": { "width": 720, "height": 1280 },
+  "messages": [
+    { "from": "them", "text": "Hey — check this out", "delay": 800 },
+    { "from": "me", "text": "Woah, that looks amazing!", "delay": 900 },
+    { "from": "them", "text": "Let's go tomorrow", "delay": 900 }
+  ],
+  "fps": 30,
+  "durationPaddingMs": 900
+}
